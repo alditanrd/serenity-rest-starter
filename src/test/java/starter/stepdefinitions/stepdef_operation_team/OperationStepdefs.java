@@ -6,7 +6,7 @@ import starter.base.method.OperationMethodAction;
 import java.io.File;
 import java.io.IOException;
 
-public class SendStatementLetterStepdefs {
+public class OperationStepdefs {
 
     OperationMethodAction oprmethod = new OperationMethodAction();
     String pathPayload = "src/test/resources/payload/payload_operation_team/";
@@ -22,6 +22,15 @@ public class SendStatementLetterStepdefs {
                 break;
             case "approve statement letter":
                 oprmethod.postApproveStatementLetter(file);
+                break;
+            case "create jira":
+                oprmethod.postCreateJira(file);
+                break;
+            case "action activate user":
+                oprmethod.postActionActivateUser(file);
+                break;
+            case "action blacklist user":
+                oprmethod.postActionBlacklistUser(file);
                 break;
             default:
                 System.out.println("Not found parameter");
@@ -39,6 +48,15 @@ public class SendStatementLetterStepdefs {
                 break;
             case "submission statement letter":
                 oprmethod.getSubmissionStatementLetter(file);
+                break;
+            case "get user profile":
+                oprmethod.getUserProfile(file);
+                break;
+            case "get list jira issues":
+                oprmethod.getListJiraIssues(file);
+                break;
+            case "get profile":
+                oprmethod.getUserProfile(file);
                 break;
             default:
                 System.out.println("Not found parameter");

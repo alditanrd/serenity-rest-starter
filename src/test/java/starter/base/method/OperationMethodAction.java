@@ -51,4 +51,50 @@ public class OperationMethodAction {
                 .get(ApiEndpoints.get_submit_statement_letter + userID + "/trx?transactionId=" + transactionID).then().extract().response();
 
     }
+
+    public void getUserProfile(File file) throws IOException{
+        String accessToken = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/api_token_cow.json", "access-token");
+        String userID = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/params_user_id.json", "user_id");
+
+        SerenityRest.given()
+                .header("x-access-token", accessToken)
+                .get(ApiEndpoints.get_user_id + "/list?q=" + userID + "&type=user_id&payment_gateway_id=1002").then().extract().response();
+    }
+
+    public void getListJiraIssues(File file) throws IOException {
+        String accessToken = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/api_token_cow.json", "access-token");
+
+        SerenityRest.given()
+                .header("x-access-token", accessToken)
+                .get(ApiEndpoints.get_list_jira_issues).then().extract().response();
+    }
+
+    public void postCreateJira(File file) throws IOException {
+    }
+
+    public void postActionActivateUser(File file) throws IOException {
+        String accessToken = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/api_token_cow.json", "access-token");
+        String cookie = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/api_cookie_cow.json", "cookie");
+        String userID = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/params_user_id.json", "user_id");
+
+        SerenityRest.given()
+                .header("Content-Type", "application/json")
+                .header("cookie", cookie)
+                .header("x-access-token", accessToken)
+                .body(file)
+                .post(ApiEndpoints.get_user_id + "/" + userID + "/update-status").then().extract().response();
+    }
+
+    public void postActionBlacklistUser(File file) throws IOException {
+        String accessToken = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/api_token_cow.json", "access-token");
+        String cookie = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/api_cookie_cow.json", "cookie");
+        String userID = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/params_user_id.json", "user_id");
+
+        SerenityRest.given()
+                .header("Content-Type", "application/json")
+                .header("cookie", cookie)
+                .header("x-access-token", accessToken)
+                .body(file)
+                .post(ApiEndpoints.get_user_id + "/" + userID + "/update-status").then().extract().response();
+    }
 }

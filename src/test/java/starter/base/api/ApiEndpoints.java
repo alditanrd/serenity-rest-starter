@@ -27,4 +27,7 @@ public class ApiEndpoints {
     public static final String post_send_statement_letter = BASE_URL_COW + "/api/statement-letter";
     public static final String get_submission_statement_letter = BASE_URL_COW + "/api/statement-letter/request?q=&page=1&limit=10&status=&flag=false";
     public static final String post_approval_statement_letter = BASE_URL_COW + "/api/statement-letter/approve";
+    public static final String get_user_id = BASE_URL_COW + "/api/user";
+    public static final String get_list_jira_issues = BASE_URL_COW + "/api/atlassian/jira/issues";
+
 }
