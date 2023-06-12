@@ -29,5 +29,6 @@ public class ApiEndpoints {
     public static final String post_approval_statement_letter = BASE_URL_COW + "/api/statement-letter/approve";
     public static final String get_user_id = BASE_URL_COW + "/api/user";
     public static final String get_list_jira_issues = BASE_URL_COW + "/api/atlassian/jira/issues";
+    public static final String post_login_cow = "https://zookeeper-staging.kredivo.com/v2/auth/local-login";
 
 }

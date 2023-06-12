@@ -7,6 +7,7 @@ import starter.base.api.ApiEndpoints;
 import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 public class OperationMethodAction {
     public void postSendStatementLetter(File fileSL) throws IOException{
@@ -86,15 +87,26 @@ public class OperationMethodAction {
     }
 
     public void postActionBlacklistUser(File file) throws IOException {
-        String accessToken = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/api_token_cow.json", "access-token");
-        String cookie = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/api_cookie_cow.json", "cookie");
+        String cookie = DataUtils.getTestData("src/test/java/outputfile/cookie.json", "AWSALB");
         String userID = DataUtils.getTestData("src/test/resources/payload/payload_operation_team/params_user_id.json", "user_id");
 
         SerenityRest.given()
                 .header("Content-Type", "application/json")
                 .header("cookie", cookie)
-                .header("x-access-token", accessToken)
                 .body(file)
                 .post(ApiEndpoints.get_user_id + "/" + userID + "/update-status").then().extract().response();
     }
+
+    public void postLoginCow(File file) throws IOException {
+        SerenityRest.given()
+                .header("Content-Type", "application/json")
+                .body(file)
+                .post(ApiEndpoints.post_login_cow).then().extract().response();
+
+        String cookie = SerenityRest.lastResponse().cookies().toString();
+        DataUtils.writeUsingFileJson(cookie, "cookie");
+        System.out.println(cookie);
+
+    }
+
 }

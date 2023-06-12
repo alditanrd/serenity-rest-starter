@@ -58,6 +58,9 @@ public class OperationStepdefs {
             case "get profile":
                 oprmethod.getUserProfile(file);
                 break;
+            case "login cow":
+                oprmethod.postLoginCow(file);
+                break;
             default:
                 System.out.println("Not found parameter");
                 break;

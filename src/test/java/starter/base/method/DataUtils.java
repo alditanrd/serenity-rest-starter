@@ -62,6 +62,24 @@ public class DataUtils {
         }
     }
 
+    public static void writeUsingFileJson(String data, String filename) {
+        File file = new File(System.getProperty("user.dir") + "/src/test/java/outputfile/"+filename+".json");
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(file);
+            fr.write(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            //close resources
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static String readUsingFileReader(String fileName) throws IOException {
         File file = new File(fileName);
         FileReader fr = new FileReader(file);

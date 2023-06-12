@@ -4,6 +4,7 @@ Feature: Sent Statement Letter
   Scenario: Submit Statement Letter
     When user hit body "submit_statement_letter.json" for send GET request "submit statement letter"
 
+    @CreateStatementLetter
   Scenario: Create Statement Letter
     When user hit body "send_statement_letter.json" for send POST request "send statement letter"
 
